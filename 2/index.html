@@ -101,10 +101,13 @@ vec4 hash4(vec2 v)
 
 vec4 hash4(vec3 v)
 {
-    vec4 p = vec4(v * mat4x3( 127.1, 311.7, 74.7,
-                              269.5, 183.3, 246.1,
-                              113.5, 271.9, 124.6,
-                              271.9, 269.5, 311.7 ) );
+    // This was ported / unrolled.
+    // Fixes Safari which does not have the symbol for mat4x2 and mat4x3
+    vec4 p = vec4(
+        v[0] * 127.1 + v[1] * 311.7 + v[2] * 74.7,
+        v[0] * 269.5 + v[1] *  183.3 + v[2] * 246.1,
+        v[0] * 113.5 + v[1] *  271.9 + v[2] * 124.6,
+        v[0] * 271.9 + v[1] *  269.5 + v[2] * 311.7);
     return fract(sin(p)*43758.5453123);
 }
 
