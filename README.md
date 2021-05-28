@@ -12,8 +12,9 @@ This file contains the minimal boilerplate and minimal tweaking to make this tra
 
   * Demo 1
     * ShaderToy [link](https://www.shadertoy.com/view/ldccW4)
-    * Demo [html](https://zackees.github.io/matrix-shader-3js/)
+    * Demo [html](https://zackees.github.io/matrix-shader-3js/1)
   
   * Demo 2
-    * 
+    * ShaderToy [link](https://www.shadertoy.com/view/4t3BWl)
+    * Demo [html](https://zackees.github.io/matrix-shader-3js/2)
   
