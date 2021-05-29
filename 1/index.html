@@ -42,7 +42,7 @@
             const fragmentShader = `
 #include <common>
 #ifdef GL_ES
-precision mediump float;
+precision highp float;  // VERY IMPORTANT for ios.
 #endif
 
 #define texture texture2D
