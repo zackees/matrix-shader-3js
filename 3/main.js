@@ -438,13 +438,29 @@ mainImage(gl_FragColor, gl_FragCoord.xy);
 }
 
 
+function query_high_performance() {
+    let sysinfo = new UAParser();
+    console.log(sysinfo.getOS());
+    console.log(sysinfo.getEngine());
+    console.log(sysinfo);
+    const os_name = sysinfo.getOS().name;
+    // All iOS products are considered low end.
+    if (os_name === "iOS") {
+        return false;
+    }
 
+    if (os_name === "Windows" || os_name === "Mac OS") {
+        if (sysinfo.getEngine().name === "Blink") {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 function init_main() {
-    let sysinfo = new UAParser();
-    console.log(sysinfo.getOS());
-    if (sysinfo.getOS().name === "Windows") {
+    const high_perf = query_high_performance();
+    if (high_perf) {
         init_matrix_hq();
     } else {
         init_matrix_lq();
