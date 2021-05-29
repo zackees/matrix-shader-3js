@@ -42,7 +42,7 @@
             const fragmentShader = `
 #include <common>
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 uniform vec3 iResolution;
@@ -293,7 +293,7 @@ void main() {
     mainImage(gl_FragColor, gl_FragCoord.xy);
 }
 `;
-            const clock = new THREE.Clock();
+            let clock = new THREE.Clock();
             const uniforms = {
                 iTime: { value: 0 },
                 iResolution: { value: new THREE.Vector3() },
