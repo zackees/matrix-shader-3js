@@ -314,12 +314,19 @@ void main() {
                 return needResize;
             }
 
+
             function render(time) {
                 //time *= 0.001;  // convert to seconds
                 resizeRendererToDisplaySize(renderer);
                 const canvas = renderer.domElement;
                 uniforms.iResolution.value.set(canvas.width, canvas.height, 1);
                 uniforms.iTime.value = clock.getElapsedTime();
+                // Reset clock every 4 hours to eliminate the long running
+                // precision problems with large floats for large time values.
+                if (uniforms.iTime.value > 60*60*4) {
+                    // Resets the time value.
+                    clock = new THREE.Clock();
+                }
                 renderer.render(scene, camera);
                 requestAnimationFrame(render);
             }
