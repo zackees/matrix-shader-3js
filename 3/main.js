@@ -1,10 +1,5 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js';
-
-//import * as UA from 'https://raw.githubusercontent.com/faisalman/ua-parser-js/master/dist/ua-parser.min.js'
-
 import * as UA from 'https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js';
-
-// https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js
 
 
 function init_matrix_hq() {
@@ -440,15 +435,20 @@ mainImage(gl_FragColor, gl_FragCoord.xy);
 
 function query_high_performance() {
     let sysinfo = new UAParser();
+    /*
+    console.log(sysinfo.getResult());
     console.log(sysinfo.getOS());
     console.log(sysinfo.getEngine());
     console.log(sysinfo);
+    */
     const os_name = sysinfo.getOS().name;
-    // Only chrome on Windows or Mac desktop can deliver
+    // Only recent chrome on Windows or Mac desktop can deliver
     // good performance with this shader.
     if (os_name === "Windows" || os_name === "Mac OS") {
         if (sysinfo.getEngine().name === "Blink") {
-            return true;
+            const version = sysinfo.getEngine().version;
+            const major_version = version.split('.').slice(0,1);
+            return Number.parseInt(major_version, 10) >= 90;
         }
     }
     return false;
