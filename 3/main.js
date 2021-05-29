@@ -1,7 +1,6 @@
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js';
 import * as UA from 'https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js';
 
-
 function init_matrix_hq() {
     const canvas = document.querySelector('#c');
     const renderer = new THREE.WebGLRenderer({ canvas });
@@ -334,7 +333,7 @@ function init_matrix_lq() {
     const fragmentShader = `
 #include <common>
 #ifdef GL_ES
-precision mediump float;
+precision highp float;
 #endif
 
 #define texture texture2D
