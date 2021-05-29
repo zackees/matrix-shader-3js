@@ -7,6 +7,7 @@
     body {
         height: 100%;
         margin: 0;
+        background-color: black;
     }
 
     #c {
@@ -18,12 +19,7 @@
 
 <body>
     <canvas id="c"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js"></script>
-    <script>
-        let ua = new UAParser();
-        console.log(ua.getOS());
-    </script>
-    <script type="module" src="./main.js">
+    <script type="module" src="./main.js" async>
     </script>
 </body>
 

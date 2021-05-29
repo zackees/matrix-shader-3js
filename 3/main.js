@@ -2,6 +2,8 @@ import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threej
 
 //import * as UA from 'https://raw.githubusercontent.com/faisalman/ua-parser-js/master/dist/ua-parser.min.js'
 
+import * as UA from 'https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js';
+
 // https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js
 
 
@@ -435,5 +437,18 @@ mainImage(gl_FragColor, gl_FragCoord.xy);
     requestAnimationFrame(render);
 }
 
-//init_matrix_hq();
-init_matrix_lq();
+
+
+
+
+function init_main() {
+    let sysinfo = new UAParser();
+    console.log(sysinfo.getOS());
+    if (sysinfo.getOS().name === "Windows") {
+        init_matrix_hq();
+    } else {
+        init_matrix_lq();
+    }    
+}
+
+init_main();
