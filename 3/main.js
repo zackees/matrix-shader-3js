@@ -444,11 +444,8 @@ function query_high_performance() {
     console.log(sysinfo.getEngine());
     console.log(sysinfo);
     const os_name = sysinfo.getOS().name;
-    // All iOS products are considered low end.
-    if (os_name === "iOS") {
-        return false;
-    }
-
+    // Only chrome on Windows or Mac desktop can deliver
+    // good performance with this shader.
     if (os_name === "Windows" || os_name === "Mac OS") {
         if (sysinfo.getEngine().name === "Blink") {
             return true;
